@@ -123,23 +123,19 @@ public class AppointmentController {
 
     // Buscar agendamentos por data
     @GetMapping("/date")
-    public ResponseEntity<List<Appointment>> getAppointmentByDate(@RequestParam Map<String, String> request){
-        String dataString = request.get("data");
-        LocalDateTime data;
+    public ResponseEntity<List<Appointment>> getAppointmentByDate(@RequestParam LocalDate data){
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-            data = LocalDateTime.parse(dataString, formatter);
+            List<Appointment> appointments = appointmentRepository.findByDataBetween(data.atStartOfDay(),data.plusDays(1).atStartOfDay());
+
+            if (appointments.isEmpty()) {
+                System.out.println("Veio vazio");
+                return ResponseEntity.noContent().build(); // Retorna 204 se não houver agendamentos
+            }
+
+            return ResponseEntity.ok(appointments);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
-
-        List<Appointment> appointments = appointmentRepository.findByData(data);
-
-        if(appointments.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.ok(appointments);
     }
 
     // Buscar agendamentos a serem confirmados - Possível ligar a disparo de mensagem
@@ -152,5 +148,24 @@ public class AppointmentController {
         }
 
         return ResponseEntity.ok(pendingAppointments);
+    }
+
+    @GetMapping("/available-times")
+    public ResponseEntity<List<String>> getAvailableTimes(@RequestParam String data){
+        try{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(data, formatter);
+
+            List<String> availableTimes = appointmentService.getAvailableTimes(localDate);
+
+            if(availableTimes.isEmpty()){
+                return ResponseEntity.noContent().build();
+            }
+
+            return ResponseEntity.ok(availableTimes);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(null);
+        }
     }
 }

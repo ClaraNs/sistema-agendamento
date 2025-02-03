@@ -9,8 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,5 +51,43 @@ public class AppointmentService {
         } catch (EmptyResultDataAccessException e){
             throw new EntityNotFoundException("Client not found");
         }
+    }
+
+    public List<String> getAvailableTimes(LocalDate date){
+        // Define horários de atendimento e intervalo da consulta
+        LocalTime startTime = LocalTime.of(9, 0);
+        LocalTime endTime = LocalTime.of(18, 0);
+        LocalDateTime startOfDay = date.atStartOfDay();
+        LocalDateTime endOfDay = date.plusDays(1).atStartOfDay();  // Isso é até 23:59:59
+        int interval = 60;
+
+        // Gera Lista com todos os horários possíveis;
+        List<String> availableTimes = new ArrayList<>();
+
+        while(startTime.isBefore(endTime)){
+            availableTimes.add(startTime.toString());
+            startTime = startTime.plusMinutes(interval);
+        }
+
+        // Todos os agendamentos para esta data
+        List<LocalDateTime> scheduledAppointments = appointmentRepository.findByDataBetween(startOfDay, endOfDay)
+                .stream()
+                .map(Appointment::getData)
+                .toList();
+
+        System.out.println("Agendamentos existentes: " + scheduledAppointments);
+
+        // Converter LocalDateTime para String (apenas a parte do horário)
+        List<String> scheduledTimes = scheduledAppointments.stream().map(dt->dt.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm")))
+                .toList();
+
+        availableTimes.removeAll(scheduledTimes);
+        /*for(String time: scheduledTimes){
+            // Adiciono apenas os horarios livres ( que nao aparecem na lista de marcados )
+            if(!scheduledTimes.contains(time))
+                availableTimes.add(time);
+        }*/
+
+        return availableTimes;
     }
 }
