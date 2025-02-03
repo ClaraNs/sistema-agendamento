@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serena Terapia - Agendamento</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png">
+        <h1>Serena Terapia</h1>
+        <p class="subheading">Agende seu atendimento</p>
+    </header>
+
+    <main>
+        <div class="calendar">
+            <div id="datepicker"></div>
+        </div>
+
+        <!--<p class="final-message">Cuidar da mente é o primeiro passo para viver plenamente.</p> -->
+    </main>
+
+    <div class="modal hidden" id="horariosModal">
+        <div class="modal-content">
+            <button id="fecharModal" class="close-btn">✖</button>
+            <h2>Selecione um horário</h2>
+            <ul id="horariosLista">
+                <!-- Horarios serao adicionados dinamicamente-->
+            </ul>
+            <button id="agendarModal" class="agendar-btn">Agendar</button>
+        </div>
+    </div>
+
+    <footer>© Serena Terapia - Bem-estar em primeiro lugar.</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
