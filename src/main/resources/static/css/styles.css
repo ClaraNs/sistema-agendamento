@@ -21,7 +21,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    /*justify-content: center;*/
     min-height: 100vh;
 }
 
@@ -216,7 +216,82 @@ footer p{
     transform: scale(1.05); /* Efeito de leve crescimento */
 }
 
-/* 
 #agendarModal:active {
     transform: scale(0.95); /* Pequena redução ao clicar */
-}*/
+}
+
+.login-container{
+   
+    /*width: 100%;
+    max-width: 350px;
+    text-align: center;
+    margin: 20px auto;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-container h2{
+    font: 1.5rem;
+    color: var(--verde-escuro);
+    margin-bottom: 15px;
+}
+
+.login-container input{
+    background-color: var(--areia);
+    width: 100%;
+    min-width: 280px;
+    padding: 10px;
+    margin-bottom: 15px;
+    /*border: 1px solid var(--verde-claro);*/
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--palha);
+    
+}
+
+.login-container input:focus{
+    outline: none;
+    border: 1px solid var(--verde-claro);
+    box-shadow: 0 0 5px var(--verde-claro);
+}
+
+.login-btn {
+    background-color: var(--verde-claro);
+    color: var(--areia);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    width: 100%;
+    display: block;
+    margin: 0px auto;
+}
+
+.login-btn:hover {
+    background-color: var(--verde-escuro);
+    transform: scale(1.05);
+}
+
+.login-btn:active{
+    transform: scale(0.95);
+}
+
+.sub-message{
+    font-size:1rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.sub-message a{
+    color: var(--verde-escuro);
+}
