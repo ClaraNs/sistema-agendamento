@@ -30,8 +30,9 @@ public class ClientController {
 
     @GetMapping("/{cpf}")
     public ResponseEntity<Client> getClientByCpf(@PathVariable String cpf) {
-        Client client = clientRepository.findByCpf(cpf)
-                .orElseThrow(() -> new ClientNotFoundException("Cliente com CPF " + cpf + " não encontrado"));
+        /*Client client = clientRepository.findByCpf(cpf)
+                .orElseThrow(() -> new ClientNotFoundException("Cliente com CPF " + cpf + " não encontrado"));*/
+        Client client = clientRepository.findByCpf(cpf).orElse(null);
 
         if(client == null) {
             return ResponseEntity.notFound().build();

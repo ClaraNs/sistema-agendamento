@@ -16,7 +16,7 @@ public class CorsConfig {
                 // Habilita CORS para todas as rotas
                 registry.addMapping("/**") // Permite todas as rotas
                         .allowedOrigins("http://127.0.0.1:5500") // Permite somente o frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
+                        .allowedMethods("GET", "POST", "PATCH", "DELETE", "OPTIONS") // Métodos permitidos
                         .allowedHeaders("*") // Todos os cabeçalhos
                         .allowCredentials(true); // Permite cookies, se necessário
             }

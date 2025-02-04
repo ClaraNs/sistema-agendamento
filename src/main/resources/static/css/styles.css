@@ -1,0 +1,297 @@
+/* Paleta de cores */
+:root{
+    --areia: #ECE5DF;
+    --palha:#DFC8B6;
+    --verde-menta: #C4C7B6;
+    --verde-claro: #859B48;
+    --verde-escuro: #1D361F;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: var(--palha);
+    color: var(--verde-escuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+    min-height: 100vh;
+}
+
+header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header img{
+    max-width: 60px;
+    margin-bottom: 10px;
+}
+
+header h1{
+    font-size: 1.2rem;
+    color: var(--verde-escuro);
+    margin-bottom: 5px;
+}
+
+header .subheading{
+    font-size: 1rem;
+    color:var(--verde-claro);
+}
+
+/*.calendar{
+    background-color: var(--areia);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--verde-escuro);
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
+
+.flatpickr-calendar {
+    background-color: var(--areia);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Passar o mouse (hover) sobre qualquer dia */
+.flatpickr-day:hover {
+    background-color: var(--verde-claro); /* Fundo verde */
+    color: white; /* Texto branco */
+    border: none; /* Remove borda */
+}
+
+/* Data selecionada */
+.flatpickr-day.selected {
+    background-color: var(--verde-claro); /* Fundo verde */
+    color: white; /* Texto branco */
+    border: 2px solid var(--verde-claro); /* Remove borda azul */
+    box-shadow: none; /* Remove sombra, se houver */
+}
+
+/* Foco na data selecionada */
+.flatpickr-day.selected:focus {
+    background-color: var(--verde-claro); /* Fundo verde */
+    color: white;
+    border: 2px solid var(--verde-escuro); /* Mantém a borda consistente */
+    outline: none; /* Remove a borda padrão azul */
+}
+
+/* Hover na data selecionada */
+.flatpickr-day.selected:hover {
+    background-color: var(--verde-escuro); /* Escurece no hover */
+    border: 2px solid var(--verde-claro); /* Mantém borda consistente */
+}
+
+/* Foco ou borda azul do navegador */
+.flatpickr-day:focus,
+.flatpickr-day:focus-visible {
+    outline: none; /* Remove borda padrão azul */
+    background-color: var(--verde-claro); /* Fundo verde */
+    color: white;
+    border: 2px solid var(--verde-claro); /* Remove borda azul */
+}
+
+/* Hover genérico para borda */
+.flatpickr-day:hover {
+    border: none;
+}
+
+/*.final-message{
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}*/
+
+footer{
+    margin-top: auto;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--verde-claro);
+    width: 100%;
+}
+
+footer p{
+    color: var(--verde-escuro);
+    font-size: 0.9rem;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content{
+    background-color: var(--areia);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal.hidden{
+    display: none;
+}
+
+.close-btn{
+    position: absolute;
+    top:10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: var(--verde-claro);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efeito ao passar o mouse */
+.close-btn:hover {
+    background: var(--verde-escuro);
+    color: var(--verde-claro);
+}
+
+#horariosLista li {
+    list-style: none;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: var(--verde-menta);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#horariosLista li:hover {
+    background-color: var(--verde-claro);
+    color: white;
+}
+
+.agendar-btn{
+    background-color: var(--verde-claro); 
+    color: white; 
+    font-size: 1.2rem; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    width: 100%;
+    max-width: 200px;
+    display: block;
+    margin: 20px auto;
+}
+
+/* Efeito ao passar o mouse */
+#agendarModal:hover {
+    background-color: var(--verde-escuro); /* Verde mais escuro no hover */
+    transform: scale(1.05); /* Efeito de leve crescimento */
+}
+
+#agendarModal:active {
+    transform: scale(0.95); /* Pequena redução ao clicar */
+}
+
+.login-container{
+   
+    /*width: 100%;
+    max-width: 350px;
+    text-align: center;
+    margin: 20px auto;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.login-container h2{
+    font: 1.5rem;
+    color: var(--verde-escuro);
+    margin-bottom: 15px;
+}
+
+.login-container input{
+    background-color: var(--areia);
+    width: 100%;
+    min-width: 280px;
+    padding: 10px;
+    margin-bottom: 15px;
+    /*border: 1px solid var(--verde-claro);*/
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--palha);
+    
+}
+
+.login-container input:focus{
+    outline: none;
+    border: 1px solid var(--verde-claro);
+    box-shadow: 0 0 5px var(--verde-claro);
+}
+
+.login-btn {
+    background-color: var(--verde-claro);
+    color: var(--areia);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+    width: 100%;
+    display: block;
+    margin: 0px auto;
+}
+
+.login-btn:hover {
+    background-color: var(--verde-escuro);
+    transform: scale(1.05);
+}
+
+.login-btn:active{
+    transform: scale(0.95);
+}
+
+.sub-message{
+    font-size:1rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.sub-message a{
+    color: var(--verde-escuro);
+}
