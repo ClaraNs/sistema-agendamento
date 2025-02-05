@@ -220,7 +220,7 @@ footer p{
     transform: scale(0.95); /* Pequena redução ao clicar */
 }
 
-.login-container{
+.input-container{
    
     /*width: 100%;
     max-width: 350px;
@@ -235,13 +235,13 @@ footer p{
     max-width: 350px;
 }
 
-.login-container h2{
+.input-container h2{
     font: 1.5rem;
     color: var(--verde-escuro);
     margin-bottom: 15px;
 }
 
-.login-container input{
+.input-container input{
     background-color: var(--areia);
     width: 100%;
     min-width: 280px;
@@ -252,17 +252,17 @@ footer p{
     border-radius: 25px;
     font-size: 1rem;
     text-align: center;
-    color: var(--palha);
+    /*color: var(--palha);*/
     
 }
 
-.login-container input:focus{
+.input-container input:focus{
     outline: none;
     border: 1px solid var(--verde-claro);
     box-shadow: 0 0 5px var(--verde-claro);
 }
 
-.login-btn {
+.input-btn {
     background-color: var(--verde-claro);
     color: var(--areia);
     font-size: 1.2rem;
@@ -277,12 +277,12 @@ footer p{
     margin: 0px auto;
 }
 
-.login-btn:hover {
+.input-btn:hover {
     background-color: var(--verde-escuro);
     transform: scale(1.05);
 }
 
-.login-btn:active{
+.input-btn:active{
     transform: scale(0.95);
 }
 
