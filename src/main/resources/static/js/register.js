@@ -31,7 +31,7 @@ document.getElementById("register-btn").addEventListener("click", async function
 
         if (response.ok) {
             console.log("Cadastro realizado com sucesso!");
-            window.location.href = "index.html"; // Redireciona após sucesso
+            window.location.href = "index.html";
         } else {
             console.log("Erro ao cadastrar. Verifique os dados.");
         }

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () =>{
+document.addEventListener("DOMContentLoaded", () => {
     flatpickr("#datepicker",{
         inline: true,  // Exibe o calendário diretamente no DOM
         enableTime: false,
@@ -6,14 +6,15 @@ document.addEventListener("DOMContentLoaded", () =>{
         minDate: "today",
         locale:"pt",
         onChange: (selectedDates, dateStr) => {
-            console.log("Data escolhida:", dateStr); // Exemplo: 31/01/2025
+            console.log("Data escolhida:", dateStr);
             fetchHorariosDisponiveis(dateStr);
+            localStorage.setItem("dataSelecionada", dateStr);
         }
     });
 
     const modal = document.getElementById("horariosModal");
     const horariosLista = document.getElementById("horariosLista");
-    const agendarModal = document.getElementById("agendarModal");
+    const agendarBtn = document.getElementById("agendarModal");
     const fecharModal = document.getElementById("fecharModal");
 
     fecharModal.addEventListener("click", () => {
@@ -43,10 +44,13 @@ document.addEventListener("DOMContentLoaded", () =>{
                 horariosLista.innerHTML = "<li>Sem horários disponíveis</li>";
             } else {
                 horarios.forEach(horario => {
-                    const li = document.createElement("li"); // ✅ Correção: Criar corretamente um elemento <li>
+                    const li = document.createElement("li");
                     li.textContent = horario;
+                    
                     li.addEventListener("click", () => {
-                        alert(`Horário ${horario} selecionado!`);
+                        document.querySelectorAll("#horariosLista li").forEach(el => el.classList.remove("selected"));
+                        li.classList.add("selected"); // Destaca o horário selecionado
+                        horarioSelecionado = horario; 
                     });
 
                     horariosLista.appendChild(li);
@@ -54,9 +58,20 @@ document.addEventListener("DOMContentLoaded", () =>{
             }
 
             modal.classList.remove("hidden");
+            
         } catch (error) {
             console.error(error);
             alert("Erro ao buscar horários, tente novamente");
         }
     }
+    
+    agendarBtn.addEventListener("click", () => {
+        if(!horarioSelecionado){
+            alert("Por favor, selecione um horário antes de continuar.");
+            return;
+        }
+
+        localStorage.setItem("horarioSelecionado", horarioSelecionado);
+        window.location.href="revisao.html"
+    })
 });
