@@ -220,7 +220,7 @@ footer p{
     transform: scale(0.95); /* Pequena redução ao clicar */
 }
 
-.input-container{
+.input-container, .review-container{
    
     /*width: 100%;
     max-width: 350px;
@@ -262,7 +262,7 @@ footer p{
     box-shadow: 0 0 5px var(--verde-claro);
 }
 
-.input-btn {
+.input-btn, .review-btn{
     background-color: var(--verde-claro);
     color: var(--areia);
     font-size: 1.2rem;
@@ -277,12 +277,12 @@ footer p{
     margin: 0px auto;
 }
 
-.input-btn:hover {
+.input-btn:hover, .review-btn:hover{
     background-color: var(--verde-escuro);
     transform: scale(1.05);
 }
 
-.input-btn:active{
+.input-btn:active, .review-btn:active{
     transform: scale(0.95);
 }
 
@@ -294,4 +294,21 @@ footer p{
 
 .sub-message a{
     color: var(--verde-escuro);
+}
+
+.date-review{
+    background-color: var(--areia);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.review-btn{
+    margin-top: 15px;
 }

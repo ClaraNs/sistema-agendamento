@@ -10,14 +10,14 @@ document.getElementById("login-btn").addEventListener("click", async function(ev
     cpf = cpf.replace(/[.\-]/g, '');
     console.log("CPF:", cpf);
 
-    // Aqui você pode adicionar a requisição para a API, por exemplo
     try {
         const response = await fetch(`http://localhost:8080/clients/${cpf}`);
         
         if (response.ok) {
-            window.location.href = "index.html";  // Redireciona para a página inicial
+            localStorage.setItem("cpf", cpf);
+            window.location.href = "index.html";
         } else if (response.status === 404) {
-            window.location.href = "cadastro.html";  // Redireciona para a página de cadastro
+            window.location.href = "cadastro.html";
         }
     } catch (error) {
         console.log("Erro ao fazer requisição:", error);
