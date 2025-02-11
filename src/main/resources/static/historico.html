@@ -6,22 +6,23 @@
     <title>Meus Horários</title>
     <link href="css/styles.css" rel="stylesheet">
 </head>
-<body>
+<body class="meus-horarios">
     <header>
         <img src="images/logo.png">
         <h1>Serena Terapia</h1>
     </header>
 
-    <div class="modal hidden" id="horariosModal">
-        <div class="modal-content">
-            <button id="fecharModal" class="close-btn">✖</button>
-            <h2>Selecione um horário</h2>
-            <ul id="horariosLista">
-                <!-- Horarios serao adicionados dinamicamente-->
-            </ul>
-            <button id="agendarModal" class="agendar-btn">Agendar</button>
-        </div>
-    </div>
+    <h2>Minhas Consultas</h2>
 
+    <label for="filtro">Filtrado por:</label>
+    <select id="filtro">
+        <option value="todas">Todas</option>
+        <option value="pendentes">Pendentes</option>
+        <option value="confirmadas">Confirmadas</option>
+    </select>
+
+    <ul id="listaConsultas"></ul>
+
+    <script src="js/history.js"></script>
 </body>
 </html>

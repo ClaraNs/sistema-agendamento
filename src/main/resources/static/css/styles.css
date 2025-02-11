@@ -194,6 +194,12 @@ footer p{
     color: white;
 }
 
+#horariosLista li.selected {
+    background-color: var(--verde-escuro);
+    color: white;
+    font-weight: bold;
+}
+
 .agendar-btn{
     background-color: var(--verde-claro); 
     color: white; 
@@ -311,4 +317,75 @@ footer p{
 
 .review-btn{
     margin-top: 15px;
+}
+
+/*body.meus-horarios {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}*/
+
+body.meus-horarios h2 {
+    font-size: 1.5rem;
+    color: var(--verde-escuro);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--verde-claro);
+    padding-bottom: 5px;
+}
+
+body.meus-horarios label {
+    font-weight: bold;
+    color: var(--verde-escuro);
+    margin-top: 10px;
+}
+
+body.meus-horarios select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--verde-escuro);
+    background-color: var(--areia);
+    font-size: 1rem;
+    color: var(--verde-escuro);
+    margin: 10px 0;
+    border: none;
+}
+
+body.meus-horarios select option:hover {
+    background-color: var(--verde-claro);
+    color: white;
+}
+
+body.meus-horarios select option:checked {
+    background-color: var(--verde-menta);
+    color: white;
+}
+
+body.meus-horarios ul {
+    list-style: none;
+    padding: 0;
+    width: 90%;
+    max-width: 400px;
+}
+
+body.meus-horarios ul li {
+    white-space: pre-line;
+    padding: 10px;
+    background-color: var(--verde-menta);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+body.meus-horarios ul li:hover {
+    background-color: var(--verde-claro);
+    color: white;
+}
+
+body.meus-horarios ul li.selected {
+    background-color: var(--verde-escuro);
+    color: white;
+    font-weight: bold;
 }
