@@ -88,19 +88,15 @@ public class AppointmentController {
 
     // Confirmar agendamento
     @PatchMapping("/{id}")
-    public ResponseEntity<Appointment> updateAppointmentStatus(@PathVariable Long id, @RequestBody boolean confirm) {
-        /*//Isso seria misturar logicas
-        if (!confirm) {
-            appointmentRepository.deleteById(id);
-            return ResponseEntity.noContent().build();
-        }*/
-
+    public ResponseEntity<Appointment> updateAppointmentStatus(@PathVariable Long id) {
         Appointment appointment = appointmentRepository.findById(id).orElse(null);
 
         if (appointment == null)
             return ResponseEntity.notFound().build();
 
-        appointment.setConfirmada(confirm);
+        appointment.setConfirmada(true);
+        appointmentRepository.save(appointment);
+
         return ResponseEntity.ok(appointment);
     }
 
